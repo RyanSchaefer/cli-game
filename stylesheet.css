@@ -6,7 +6,7 @@ body{
 div#console{
   height: 90%;
   width: 100%;
-  overflow: scroll;
+  overflow: auto;
   color:green;
   font-size: 12pt;
   padding-left: 5%;
