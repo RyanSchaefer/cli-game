@@ -1,0 +1,34 @@
+body{
+  background:black;
+  color:green;
+  font-family: monospace;
+}
+div#console{
+  height: 90%;
+  width: 100%;
+  overflow: scroll;
+  color:green;
+  font-size: 12pt;
+  padding-left: 5%;
+}
+input{
+  background: black;
+  width: 95%;
+  color: green;
+  height: 10%;
+  font-size: 20pt;
+  font-family: monospace;
+  text-transform: lowercase;
+  display: inline;
+  border: 0;
+  
+}
+div#blinker{
+  width: 5%;
+  background: black;
+  color: green;
+  height: 10%;
+  font-size: 20pt;
+  font-family: monospace;
+  display: inline;
+}
