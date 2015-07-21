@@ -21,7 +21,7 @@ input{
   text-transform: lowercase;
   display: inline;
   border: 0;
-  
+  overflow-y: hidden;
 }
 div#blinker{
   width: 5%;
