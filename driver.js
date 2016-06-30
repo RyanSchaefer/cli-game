@@ -11,13 +11,22 @@ class Main{
 	start_animating(){
 		x = setInterval(function (){
 			if (animationDone === true){
-				task();
+				try{
+					this.aminations[0]();
+					this.animations.shift();
+				}
+				catch(e){
+				}
 			}
 		},1);}
 	start_working(){
 		x = setInterval(function (){
-			this.tasks[0]();
-			this.tasks.shift();
+			try{
+				this.tasks[0]();
+				this.tasks.shift();
+			}
+			catch(e){
+			}
 		},1);
 	}
 	animation_blink(){
