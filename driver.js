@@ -9,7 +9,7 @@ class Main{
 		this.tasks = [];
 	}
 	start_animating(){
-		x = setInterval(function (){
+		var x = setInterval(function (){
 			if (animationDone === true){
 				try{
 					this.aminations[0]();
@@ -20,7 +20,7 @@ class Main{
 			}
 		},1);}
 	start_working(){
-		x = setInterval(function (){
+		var x = setInterval(function (){
 			try{
 				this.tasks[0]();
 				this.tasks.shift();
