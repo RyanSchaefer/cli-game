@@ -106,8 +106,8 @@ class Main{
 		var key = event.KeyCode;
 		if (key == 13){
 			console.log(get_input());
+			return false;
 		}
-		return false;
 	}
 	start(){
 		this.start_working();
