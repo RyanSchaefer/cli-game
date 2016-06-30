@@ -30,6 +30,7 @@ class Main{
 		},1);
 	}
 	animation_blink(){
+		var blink = 0;
 		window.setInterval(function blinking(){
 			if (blink == 0){
 				document.getElementById("blinker").innerHTML = ">";
