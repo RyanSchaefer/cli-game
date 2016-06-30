@@ -105,7 +105,7 @@ class Main{
 	key_checker(event){
 		var key = event.KeyCode;
 		if (key == 13){
-			command(get_input());
+			console.log(get_input());
 		}
 	}
 	start(){
