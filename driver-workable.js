@@ -114,7 +114,7 @@ class Main{
 				this.context.started = true;
 			}
 		}
-		if(input == "help" && ){
+		if(input == "help"){
 			if(!this.context.first_reboot){
 				this.add_animation(this.clear_console,{});
 				this.add_animation(this.plbl, {element:"console", message:"List of avialable commands : ^^^^^^^^^^^^^^^||...||^^^^Well, hold on a second^^^^^|| Well this engine is incapable of percise seconds so give me say.^^^^.^^^^.^^^^ presicely 975 miliseconds to work this out.|||^^^^^^^^^^^^^Ok! We've gotten somewhere! | I just figured out something crucial to the playing of this game. Currently there aren't any commands to display! ^^^^^^^ Wait. ^^^^^^^ That can't be right.|| ^^^^^^^ Maybe turning it on and off again will fix this...", speed:75});
