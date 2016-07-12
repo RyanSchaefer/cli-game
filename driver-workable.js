@@ -1,6 +1,6 @@
-//window.onerror = function (error){
-//alert(error);
-//};
+window.onerror = function (error){
+alert(error)
+};
 //Start up animation
 function g_e(e){
 	return document.getElementById(e);
@@ -10,14 +10,19 @@ class Main{
 	constructor(){
 		this.animations = [];
 		this.tasks = [];
-		this.context = "";
+		this.context = {};
 		this.path = "";
+		self = this;
 	}
 	start_animating(){
 		try{
 			if (animation_done){
+				g_e("input").onkeypress = function(event){return main.key_checker(event);};
 				var y = this.animations.shift();
 				y.func(y.args);
+			}else{
+				g_e("input").onkeypress = function(event){if(event.keyCode == 13){
+				g_e("input").value = "";return false;}};
 			}
 		}
 		catch(e){}
@@ -52,6 +57,7 @@ class Main{
 		animation_done = false;
 		var fade = 0;
 		var fadeOut = 0;
+		g_e(object.element).style.display = "block";
 		var interval = setInterval(function startFade(){
 			g_e(object.element).style.opacity = fade;
 			if(fade>1 && fadeOut == 0){
@@ -60,6 +66,7 @@ class Main{
 			else if(fade < 0){
 				animation_done = true;
 				fadeOut = 0;
+				g_e(object.element).style.display = "none";
 				clearInterval(interval);
 			}
 			else if(fadeOut == 0){
@@ -91,25 +98,33 @@ class Main{
 			}
 		}, object.speed);
 	}
+	animation_reboot(object){
+		self.add_animation(self.clear_console, {});
+		self.add_animation(self.animation_fade, {element:"startUp"});
+		self.add_animation(self.plbl, {message:"initiliazing boot sequence............|reticulating squids....^^^^^^|dereticulating squids....^^^^^^|deregulating squids....^^^^^^|reregulating squids....^^^^^^|squids prepared...^^^^^^",element:"console", speed:75});
+		self.add_animation(self.clear_console);
+		self.add_animation(self.plbl, {message:"SquidOS.^^^^^^.^^^^^^.^^^^^^ Booted!^^^^^^^^^^^^^^", element:"console", speed:75})
+		self.add_animation(self.clear_console, {});
+		self.add_animation(self.plbl, {message:"Awating command. Type help for a list of commands.", speed:75, element:"console"});
+	}
 	command(input){
 		if(input == "y"){
-			if (this.context == ""){
-				g_e("start").style.display = "none";
-				g_e("startUp").style.display = "block";
-				this.add_animation(this.animation_fade, {element:"startUp"});
-				this.add_animation(function(){g_e("startUp").style.display = "none";});
-				this.add_animation(this.plbl, {message:"initiliazing boot sequence............|reticulating squids....^^^^^^|dereticulating squids....^^^^^^|deregulating squids....^^^^^^|reregulating squids....^^^^^^|squids prepared...^^^^^^",element:"console", speed:75});
-				this.add_animation(this.clear_console);
-				this.add_animation(this.plbl, {message:"SquidOS.^^^^^^.^^^^^^.^^^^^^ booted!^^^^^^^^^^^^^^", element:"console", speed:75})
-				this.add_animation(this.clear_console);
-				this.add_animation(this.plbl, {message:"Awating command. Type help for a list of commands.", speed:75, element:"console"});
-				this.context = "started";
+			if(!this.context.started){
+				this.add_animation(this.animation_reboot, {});
+				this.context.started = true;
 			}
 		}
-		if(input == "help"){
-			this.add_animation(this.clear_console);
-			this.add_animation(this.plbl, {element:"console", message:"List of avialable commands : ^^^^|...|^^^^^^give me a sec.^^^^.^^^^^.^^^^^^^^^ ok  I got them.|^^^^^^^^ Oh dear, it seems that we forgot to add the commands...| ^^^^^^^^ Oh well, just looks like we will have to reboot.", speed:75});
-			this.add_animation(function(){this.clear_console();g_e("startUp").style.display = "block"; this.animation_fade({element:"startUp"});})
+		if(input == "help" && ){
+			if(!this.context.first_reboot){
+				this.add_animation(this.clear_console,{});
+				this.add_animation(this.plbl, {element:"console", message:"List of avialable commands : ^^^^^^^^^^^^^^^||...||^^^^Well, hold on a second^^^^^|| Well this engine is incapable of percise seconds so give me say.^^^^.^^^^.^^^^ presicely 975 miliseconds to work this out.|||^^^^^^^^^^^^^Ok! We've gotten somewhere! | I just figured out something crucial to the playing of this game. Currently there aren't any commands to display! ^^^^^^^ Wait. ^^^^^^^ That can't be right.|| ^^^^^^^ Maybe turning it on and off again will fix this...", speed:75});
+				this.add_animation(this.animation_reboot,{});
+				this.context.first_reboot = true;
+			}
+			else if(this.context.first_reboot){
+				this.add_animation(this.clear_console, {});
+				this.add_animation(this.plbl, {element:"console", speed:75, message:"Ok^^^^^^^^^^^^^| Here goes second try..."});
+			}
 		}
 	}
 	get_input(){
@@ -117,7 +132,7 @@ class Main{
 		g_e("input").value = "";
 		return x;
 	}
-	clear_console(){
+	clear_console(object){
 		g_e("console").innerHTML = "";
 	}
 	key_checker(event){
@@ -136,4 +151,4 @@ class Main{
 }
 alert("compiled");
 main = new Main();
-main.start()
+main.start();
