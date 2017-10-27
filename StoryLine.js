@@ -1,0 +1,4 @@
+story = {
+		'start1':'Welcome to SquidOS! An OS coded in-browser entirely in the greatest language on earth,^20 JavaScript. ^15| Why is JavaScript so amazing you might ask? |^15Well,^06 let me show you. ^20| #Ahem#^15 Javascript, ^13 What is 4 + 4? ||^13.^13.^13.|^13 >At least 7.|| ^30 Moving on, ^06 allow me to guide you along some of the features of SquidOS. ^09|',
+		'start2':'The screen before you where green text is appearing is the console. |^13 Its main purpose is to inform the user of what is happening via a series of green symbols.| ^13 Below the console is the SquidOS Text Response Field %.| ^13 You can, if you so desire, respond with text within the SquidOS Text Response Field %.^13 | To confirm that your SquidOS Text Response Field % is genuine ^06please respond the letter Y.'
+}
